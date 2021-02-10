@@ -22,29 +22,13 @@
 
             <?php
 
-            $items = array(
-                array(
-                    "cursus" => "Javascript",
-                    "omschrijving" => "Programmeren in de browser",
-                    "prijs" => 90.00
-                ),
-                array(
-                    "cursus" => "PHP",
-                    "omschrijving" => "Programmeren op de server",
-                    "prijs" => 150.00
-                ),
-                array(
-                    "cursus" => "Dreamweaver Eindwerk",
-                    "omschrijving" => "Webdesign in de praktijk",
-                    "prijs" => 180.00
-                ),
-                array(
-                    "cursus" => "Dreamweaver",
-                    "omschrijving" => "Webdesign thuis",
-                    "prijs" => 280.00
-                )
-
-            );
+            $items = [
+                ['cursus' => 'Dreamwaver', 'omschrijving' => 'Basis webdesign', 'prijs' => '120'],
+                ['cursus' => 'Javascript', 'omschrijving' => 'Programmeren in de browser', 'prijs' => '90'],
+                ['cursus' => 'PHP', 'omschrijving' => 'Programmeren op de server', 'prijs' => '150'],
+                ['cursus' => 'Dreamwaver Eindwerk', 'omschrijving' => 'Webdesign in de praktijk', 'prijs' => '180'],
+                ['cursus' => 'Dreamwaver', 'omschrijving' => 'Webdesign thuis', 'prijs' => '280']
+            ];
 
 
 foreach ($items as $item) {
