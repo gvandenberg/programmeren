@@ -6,7 +6,7 @@
     <title>Inschrijven</title>
 </head>
 <body>
-<form method="post" action="?">
+<form method="post" action="">
 
         <input type="text" name="naam" placeholder="Wat is je naam?">
 
