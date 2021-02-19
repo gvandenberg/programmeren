@@ -1,10 +1,16 @@
 <?php include 'includes/header.php'; ?>    
     
-    <form action="" method="POST">
-        <input type="text" placeholder="gebruikersnaam" name="username">
-        <input type="password" placeholder="wachtwoord" name="password">
-        <input type="submit" name="submit" value="inloggen">
-    </form>
+<form action="" method="post">
+  <div class="mb-3 col-lg-2">
+    <label for="InputUsername" class="form-label">Gebruikersnaam</label>
+    <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3 col-lg-2">
+    <label for="InputPassword" class="form-label">Wachtwoord</label>
+    <input type="password" name="password" class="form-control" id="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
 
 
     <?php
@@ -16,11 +22,11 @@
             ['username' => 'marten', 'password' => 'marten']
         ];
 
-        $username = 'false';
+        $username = FALSE;
 
         foreach ($users as $user) {
             if ($user['username'] == $_POST['username']) {
-                $username = 'true';
+                $username = TRUE;
                 if ($user['password'] == $_POST['password']) {
                     $_SESSION['ingelogd'] = $user['username'];
                     header('Location: index.php');
@@ -31,7 +37,7 @@
             }
         } 
         
-        if ($username == 'false'){
+        if ($username == FALSE){
             echo 'Je gebruiksnaam klopt niet!';
         }
             
@@ -41,5 +47,4 @@
 
 
     ?>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
