@@ -14,34 +14,27 @@
 
 
     <?php
-        if($_POST) {
-
-        $users = [
-            ['username' => 'admin', 'password' => 'admin'],
-            ['username' => 'gert', 'password' => 'gert'],
-            ['username' => 'marten', 'password' => 'marten']
-        ];
-
+    if ($_POST){
+        $conn = mysqli_connect('localhost','root','','trainingen');
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($conn, $sql);
         $username = FALSE;
 
-        foreach ($users as $user) {
-            if ($user['username'] == $_POST['username']) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            if ($row['username'] == $_POST['username']) {
                 $username = TRUE;
-                if ($user['password'] == $_POST['password']) {
-                    $_SESSION['ingelogd'] = $user['username'];
+                if ($row['password'] == $_POST['password']) {
+                    $_SESSION['ingelogd'] = $row['username'];
                     header('Location: index.php');
                 } else {
                     echo 'Verkeerd wachtwoord';
                 }
-
             }
         } 
-        
         if ($username == FALSE){
             echo 'Je gebruiksnaam klopt niet!';
         }
-            
-        }
+    }
 
         
 

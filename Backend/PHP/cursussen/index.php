@@ -5,7 +5,7 @@
 ?>
 <form method="post" action="">
     <input type="text" name="naam" placeholder="Wat is je naam?"><br>
-    <table class="table table-hover table-sm w-auto">
+    <table class="table table-hover table-sm w-auto m-2">
         <thead>
             <tr>
                 <th>Cursus</th>
@@ -16,41 +16,43 @@
         </thead>
         <tbody>
         <?php
-
-            $items = [
-                ['cursus' => 'Dreamwaver', 'omschrijving' => 'Basis webdesign', 'prijs' => '120'],
-                ['cursus' => 'Javascript', 'omschrijving' => 'Programmeren in de browser', 'prijs' => '90'],
-                ['cursus' => 'PHP', 'omschrijving' => 'Programmeren op de server', 'prijs' => '150'],
-                ['cursus' => 'Dreamwaver Eindwerk', 'omschrijving' => 'Webdesign in de praktijk', 'prijs' => '180'],
-                ['cursus' => 'Dreamwaver', 'omschrijving' => 'Webdesign thuis', 'prijs' => '280']
-            ];
+                $conn = mysqli_connect('localhost','root','','trainingen');
+                $sql = "SELECT * FROM cursussen";
+                $result = mysqli_query($conn, $sql);
 
 
-foreach ($items as $item) {
-    echo "
-    <tr>
-        <td>".$item['cursus']."</td>
-        <td>".$item['omschrijving']."</td>
-        <td>€".$item['prijs']."</td>
-        <td>";
-    if (isset($_SESSION['ingelogd'])){
-        echo "<input type='submit' value='Inschrijven'>";
-    }
-    echo "</td>
-    </tr>";
-}
-
-echo "</tbody></table>
-</form>";
-
-if ($_POST) {
-    if($_POST['naam']) {
-        echo "Beste ".$_POST['naam'].", je hebt je ingeschreven voor een hele vreemde cursus";
-    } else {
-        echo "Iemand heeft zich ingeschreven voor een hele vreemde cursus";
-    }
-}
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                    <tr>
+                        <td>".$row['cursus']."</td>
+                        <td>".$row['omschrijving']."</td>
+                        <td>€".$row['prijs']."</td>
+                        <td>";
+                    if (isset($_SESSION['ingelogd'])){
+                        echo "<input type='submit' value='Inschrijven'>";
+                    }
+                } 
+            
 
 
-?>
-        <?php include 'includes/footer.php'; ?>
+            
+                echo "</td>
+                </tr>";
+            
+
+            echo "</tbody></table>
+            </form>";
+
+            if ($_POST) {
+                if($_POST['naam']) {
+                    echo "Beste ".$_POST['naam'].", je hebt je ingeschreven voor een hele vreemde cursus";
+                } else {
+                    echo "Iemand heeft zich ingeschreven voor een hele vreemde cursus";
+                }
+            }
+
+        ?>
+
+
+
+<?php include 'includes/footer.php'; ?>
