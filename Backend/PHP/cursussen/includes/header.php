@@ -26,6 +26,9 @@ session_start();
                     <?php if (isset($_SESSION['ingelogd'])){
                         echo '<li class="nav-item">
                         <a class="nav-link" href="uitloggen.php">Uitloggen</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="add.php">Cursussen toevoegen</a>
                         </li>';
                     } else {
                         echo '<li class="nav-item">
