@@ -24,7 +24,7 @@
             if ($row['username'] == $_POST['username']) {
                 $username = TRUE;
                 if ($row['password'] == $_POST['password']) {
-                    $_SESSION['ingelogd'] = $row['username'];
+                    $_SESSION['ingelogd'] = $row['naam_voluit'];
                     header('Location: index.php');
                 } else {
                     echo 'Verkeerd wachtwoord';

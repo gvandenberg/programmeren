@@ -29,10 +29,14 @@ session_start();
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="add.php">Cursussen toevoegen</a>
-                        </li>';
+                        </li>
+                        ';
                     } else {
                         echo '<li class="nav-item">
                         <a class="nav-link" href="inloggen.php">Inloggen</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="registreren.php">Registreren</a>
                         </li>';
                     }
 

@@ -22,6 +22,7 @@
 
 
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['id'];
                     echo "
                     <tr>
                         <td>".$row['cursus']."</td>
@@ -29,7 +30,9 @@
                         <td>€".$row['prijs']."</td>
                         <td>";
                     if (isset($_SESSION['ingelogd'])){
-                        echo "<input type='submit' value='Inschrijven'>";
+                        echo "<input type='submit' value='Inschrijven' name='add'>&nbsp";
+                        echo "<a href='edit.php?id={$row['id']}'>Bewerken</a>&nbsp";
+                        echo "<a onClick='return confirmSubmit()' href='delete.php?id={$row['id']}'>Verwijderen</a>";
                     }
                 } 
             
@@ -43,7 +46,7 @@
             echo "</tbody></table>
             </form>";
 
-            if ($_POST) {
+            if (isset($_POST['add'])) {
                 if($_POST['naam']) {
                     echo "Beste ".$_POST['naam'].", je hebt je ingeschreven voor een hele vreemde cursus";
                 } else {
@@ -51,8 +54,18 @@
                 }
             }
 
+
         ?>
 
 
+<script>
+function confirmSubmit() {
+var agree=confirm("Weet je zeker dat je het wil verwijderen?");
+if (agree)
+ return true ;
+else
+ return false ;
+}
+</script>
 
 <?php include 'includes/footer.php'; ?>
