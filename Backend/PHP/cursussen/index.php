@@ -4,7 +4,6 @@
 }
 ?>
 <form method="post" action="">
-    <input type="text" name="naam" placeholder="Wat is je naam?"><br>
     <table class="table table-hover table-sm w-auto m-2">
         <thead>
             <tr>
@@ -47,24 +46,23 @@
             </form>";
 
             if (isset($_POST['add'])) {
-                if($_POST['naam']) {
-                    echo "Beste ".$_POST['naam'].", je hebt je ingeschreven voor een hele vreemde cursus";
+                if($_SESSION['ingelogd']) {
+                    echo "Beste ".$_SESSION['ingelogd'].", je hebt je ingeschreven voor een hele vreemde cursus";
                 } else {
                     echo "Iemand heeft zich ingeschreven voor een hele vreemde cursus";
                 }
             }
 
-
+3
         ?>
 
 
 <script>
 function confirmSubmit() {
-var agree=confirm("Weet je zeker dat je het wil verwijderen?");
+var agree=confirm("Weet je zeker dat je de cursus wilt verwijderen?");
 if (agree)
  return true ;
-else
- return false ;
+else{ return false ;
 }
 </script>
 

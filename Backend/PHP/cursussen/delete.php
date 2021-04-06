@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_SESSION['ingelogd'])) {
 $id = $_GET['id'];
 $conn = mysqli_connect('localhost','root','','trainingen');
