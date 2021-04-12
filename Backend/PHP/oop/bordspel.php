@@ -28,4 +28,5 @@ class pieces {
     }
 }
 
+function start(){}
 ?>
